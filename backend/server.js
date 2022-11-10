@@ -1,20 +1,22 @@
 require('dotenv').config();
 const express = require('express');
 
+const workoutRoutes = require('./routes/workouts');
+
 // Express App
 const app = express();
 
-// Middlewares
+/* Middlewares */
+// Sees if a req has a body, if so it passes and attaches it to the req object
+app.use(express.json());
+// Request Logger
 app.use((req, res, next) => {
-    // Request Logger
     console.log(req.path, req.method);
     next();
 });
 
 // Routes
-app.get('/', (req, res) => {
-    res.json({ msg: 'Welcome to the app' });
-});
+app.use('/api/workouts', workoutRoutes);
 
 // Listen for requests on port from .env
 app.listen(process.env.PORT, () => {
