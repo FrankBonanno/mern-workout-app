@@ -2,6 +2,9 @@ import React from 'react';
 /* CUSTOM HOOKS */
 import { useWorkoutsContext } from '../hooks/useWorkoutsContext';
 
+/* DATE FNS */
+import formatDistancetoNow from 'date-fns/formatDistanceToNow';
+
 import DeleteIcon from '../assets/delete.svg';
 
 const WorkoutDetails = ({ workout }) => {
@@ -30,8 +33,10 @@ const WorkoutDetails = ({ workout }) => {
                 <strong>Reps: </strong>
                 {workout.reps}
             </p>
-            <p>{workout.createdAt}</p>
-            <span onClick={handleClick}>X</span>
+            <p>{formatDistancetoNow(new Date(workout.createdAt), { addSuffix: true })}</p>
+            <span onClick={handleClick}>
+                <img src={DeleteIcon} />
+            </span>
         </div>
     );
 };
