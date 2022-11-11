@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const validator = require('validator');
 
 const Schema = mongoose.Schema;
 
@@ -16,7 +17,19 @@ const userSchema = new Schema({
 });
 
 // static signup method
+// must be normal function to use 'this.'
 userSchema.statics.signup = async function (email, password) {
+    // input validation
+    if (!email || !password) {
+        throw Error('All fields must be filled!');
+    }
+    if (!validator.isEmail(email)) {
+        throw Error('Please enter a valid email!');
+    }
+    if (!validator.isStrongPassword(password)) {
+        throw Error('Password not strong enough!');
+    }
+
     // check if email is signed up already
     const emailExists = await this.findOne({ email });
     if (emailExists) {
