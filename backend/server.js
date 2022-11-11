@@ -7,7 +7,10 @@ const workoutRoutes = require('./routes/workouts');
 // Express App
 const app = express();
 
+const cors = require('cors');
+
 /* Middlewares */
+app.use(cors());
 // Sees if a req has a body, if so it passes and attaches it to the req object
 app.use(express.json());
 // Request Logger
