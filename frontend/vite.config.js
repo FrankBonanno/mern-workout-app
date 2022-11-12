@@ -8,8 +8,6 @@ export default defineConfig({
             '/api/': {
                 target: 'https://workout-tracker-fb.onrender.com/',
                 changeOrigin: true,
-                secure: false,
-                ws: true,
             },
         },
     },
