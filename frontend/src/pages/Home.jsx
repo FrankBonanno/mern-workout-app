@@ -14,7 +14,7 @@ const Home = () => {
     // Fetch data from api once when home page loads
     useEffect(() => {
         const fetchWorkouts = async () => {
-            const response = await fetch('/api/workouts', {
+            const response = await fetch('https://workout-tracker-fb.onrender.com/api/workouts', {
                 headers: {
                     Authorization: `Bearer ${user.token}`,
                 },
