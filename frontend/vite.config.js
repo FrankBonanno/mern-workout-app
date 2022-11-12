@@ -6,6 +6,7 @@ export default defineConfig({
     server: {
         proxy: {
             '/api/workouts': 'http://localhost:4000',
+            '/api/user': 'http://localhost:4000',
         },
     },
     plugins: [react()],
