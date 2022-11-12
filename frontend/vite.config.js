@@ -5,10 +5,7 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
     server: {
         proxy: {
-            '/api/': {
-                target: 'https://workout-tracker-fb.onrender.com/',
-                changeOrigin: true,
-            },
+            '/api/': 'https://workout-tracker-fb.onrender.com/',
         },
     },
     plugins: [react()],
