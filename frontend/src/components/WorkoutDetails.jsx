@@ -1,6 +1,7 @@
 import React from 'react';
 /* CUSTOM HOOKS */
 import { useWorkoutsContext } from '../hooks/useWorkoutsContext';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 /* DATE FNS */
 import formatDistancetoNow from 'date-fns/formatDistanceToNow';
@@ -9,10 +10,18 @@ import DeleteIcon from '../assets/delete.svg';
 
 const WorkoutDetails = ({ workout }) => {
     const { dispatch } = useWorkoutsContext();
+    const { user } = useAuthContext();
 
     const handleClick = async () => {
+        if (!user) {
+            return;
+        }
+
         const res = await fetch('/api/workouts/' + workout._id, {
             method: 'DELETE',
+            headers: {
+                Authorization: `Bearer ${user.token}`,
+            },
         });
 
         const json = await res.json();
