@@ -5,7 +5,10 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
     server: {
         proxy: {
-            '/api/': 'https://workout-tracker-fb.herokuapp.com/',
+            '/api/': {
+                target: 'https://workout-tracker-fb.herokuapp.com/',
+                changeOrigin: true,
+            },
         },
     },
     plugins: [react()],
