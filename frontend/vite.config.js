@@ -6,7 +6,7 @@ export default defineConfig({
     server: {
         proxy: {
             '/api/': {
-                target: 'https://workout-tracker-fb.netlify.app/',
+                target: 'https://workout-tracker-fb.herokuapp.com/',
                 changeOrigin: true,
                 secure: false,
                 ws: true,
