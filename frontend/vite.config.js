@@ -8,6 +8,8 @@ export default defineConfig({
             '/api/': {
                 target: 'https://workout-tracker-fb.herokuapp.com/',
                 changeOrigin: true,
+                secure: false,
+                ws: true,
             },
         },
     },
